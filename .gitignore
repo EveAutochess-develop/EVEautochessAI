@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+*.egg-info/
+out/
+eveac_ai/samples/
+
+# Farm runtime outputs (logs, checkpoints, nets, state bank)
+samples/

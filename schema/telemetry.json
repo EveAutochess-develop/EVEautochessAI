@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.telemetry",
+  "title": "TelemetryPack — not win/loss only",
+  "type": "object",
+  "required": ["schema_ver", "match_id", "round", "seats"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "backend": { "type": "string", "enum": ["cpu_stub", "gpu_stub", "cpu", "gpu"] },
+    "match_id": { "type": "string" },
+    "round": { "type": "integer" },
+    "seats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seat_id"],
+        "properties": {
+          "seat_id": { "type": "integer" },
+          "won": { "type": "boolean" },
+          "titan_hp": { "type": "number" },
+          "loss_comp_gold": { "type": "integer" },
+          "rank_hint": { "type": "number" },
+          "ships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uid": { "type": "string" },
+                "ship_id": { "type": ["string", "integer"] },
+                "dmg_out": { "type": "number" },
+                "dmg_in": { "type": "number" },
+                "repaired": { "type": "number" },
+                "cap_used": { "type": "number" },
+                "lock_s": { "type": "number" },
+                "survived": { "type": "boolean" }
+              }
+            }
+          },
+          "kill_calendar": { "type": "array" },
+          "traj_snapshots": { "type": "array" },
+          "hp_trends": { "type": "array" },
+          "lock_timeline": { "type": "array" }
+        }
+      }
+    }
+  }
+}

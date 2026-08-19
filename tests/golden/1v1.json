@@ -1,0 +1,7 @@
+{
+  "schema_ver": "1",
+  "seed": 42,
+  "fleet_a": ["10"],
+  "fleet_b": ["20"],
+  "note": "Frozen 1v1 ids; kernel must be deterministic for this seed."
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.genome",
+  "title": "behavior.genome — five titan slices × five continuous stances",
+  "type": "object",
+  "required": ["schema_ver", "content_rev", "titan_slices", "stance"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "content_rev": { "type": "string" },
+    "origin": { "type": "string", "description": "farm | user_delta | merged" },
+    "titan_ids": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["amarr", "caldari", "gallente", "minmatar", "angel"] }
+    },
+    "titan_slices": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "ship": { "type": "object", "additionalProperties": { "type": "number" } },
+          "equip": { "type": "object", "additionalProperties": { "type": "number" } }
+        }
+      }
+    },
+    "stance": {
+      "type": "object",
+      "required": ["economy", "offense", "logistics", "speed_control", "formation"],
+      "properties": {
+        "economy": { "type": "number" },
+        "offense": { "type": "number" },
+        "logistics": { "type": "number" },
+        "speed_control": { "type": "number" },
+        "formation": { "type": "number" }
+      }
+    },
+    "titan_pick": {
+      "type": "object",
+      "description": "Lobby pick distribution; not a titan brand. Second-round uses census + keep.",
+      "additionalProperties": { "type": "number" }
+    },
+    "prepare": {
+      "type": "object",
+      "description": "Initial/trained knobs for buy/place/fit. Not game-rule overrides.",
+      "properties": {
+        "buy_n": { "type": "integer", "minimum": 1 },
+        "fit_slots": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "hangar_keep_if_economy_ge": { "type": "number" }
+      }
+    },
+    "black_box": { "type": "object" }
+  },
+  "description": "Internal floats are for sampling only. Public ranking is weights_table T0–Tn."
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.weights_table",
+  "title": "T0–T48+TU gold-spend ranking (ships and equips mixed; ties = equal)",
+  "type": "object",
+  "required": ["schema_ver", "content_rev", "kind", "tiers"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "content_rev": { "type": "string" },
+    "kind": { "type": "string", "enum": ["relative_tiers"] },
+    "note": { "type": "string" },
+    "tier_order": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "T0 important spend … T48 unimportant then TU. One mixed list of ships+equips."
+    },
+    "tiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "id"],
+              "properties": {
+                "kind": { "type": "string", "enum": ["ship", "equip"] },
+                "id": { "type": "string" }
+              }
+            }
+          },
+          "ships": { "type": "array", "items": { "type": ["string", "integer"] } },
+          "equips": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

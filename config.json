@@ -1,0 +1,43 @@
+{
+  "schema_ver": "1",
+  "game_data_dir": "../eveautochess-dev/godot_project/data",
+  "battle_backend": "gpu",
+  "cuda_parallel_matches": 8,
+  "sim_parallel": 8,
+  "stats_interval_s": 10,
+  "matches_per_batch": 8,
+  "matches_per_batch_fast": 1,
+  "train_batches": 8,
+  "seats": 20,
+  "keep_top": 3,
+  "titan_ids": ["amarr", "caldari", "gallente", "minmatar", "angel"],
+  "stance_ids": ["economy", "offense", "logistics", "speed_control", "formation"],
+  "tier_count": 49,
+  "tier_unknown": "TU",
+  "train_matches": 16,
+  "out_dir": "samples",
+  "gpu_min_jobs": 24,
+  "gpu_min_BS": 400,
+  "gpu_sparse_dt": true,
+  "checkpoint_every_n": 5,
+  "nullsec_landmarks": [4, 6, 8],
+  "lowsec_landmarks": [3, 6, 10],
+  "elite_pool_frac": 0.15,
+  "scripted_fsm_frac": 0.10,
+  "elite_pool_keep": 8,
+  "security_modes_enabled": ["nullsec", "lowsec"],
+  "lowsec_frac": 0.2,
+  "lowsec_tables": 40,
+  "lowsec_seats": 2,
+  "lowsec_pvp_loss_mul": 0.25,
+    "curriculum": {
+      "mode": "full_match",
+      "capital_frac": 0.2,
+      "budget": {
+        "open_cache": 0.10,
+        "mid": 0.55,
+        "late": 0.20,
+        "full_calib": 0.15
+      }
+    }
+}

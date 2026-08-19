@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.commands",
+  "title": "Legal command catalog (runtime enum; do not hardcode HUD)",
+  "type": "object",
+  "required": ["schema_ver", "commands"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "note": { "type": "string" },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "phase"],
+        "properties": {
+          "id": { "type": "string" },
+          "phase": { "type": "string", "enum": ["prepare", "any"] },
+          "game_entry": { "type": "string" }
+        }
+      }
+    }
+  },
+  "example": {
+    "schema_ver": "1",
+    "note": "LegalActions(seat, phase, board_desc, economy) enumerates at runtime.",
+    "commands": [
+      { "id": "buy_ship", "phase": "prepare", "game_entry": "shop_controller.gd" },
+      { "id": "refresh_shop", "phase": "prepare", "game_entry": "shop_controller.gd" },
+      { "id": "buy_exp", "phase": "prepare", "game_entry": "match_controller.gd buy_exp" },
+      { "id": "deploy", "phase": "prepare", "game_entry": "BoardController legal cells" },
+      { "id": "swap", "phase": "prepare", "game_entry": "BoardController" },
+      { "id": "sell", "phase": "prepare", "game_entry": "BoardController" },
+      { "id": "fit_equip", "phase": "prepare", "game_entry": "function bucket" },
+      { "id": "unequip", "phase": "prepare", "game_entry": "function bucket" },
+      { "id": "change_titan", "phase": "prepare", "game_entry": "PVP titan" },
+      { "id": "scout", "phase": "prepare", "game_entry": "MULTIPLAYER_PVP §4.2" },
+      { "id": "submit", "phase": "prepare", "game_entry": "confirm prepare" }
+    ]
+  }
+}

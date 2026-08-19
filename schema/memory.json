@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.memory",
+  "title": "Cross-round memory — last fight pack + scout; no live opponent board",
+  "type": "object",
+  "required": ["schema_ver", "seat_id"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "seat_id": { "type": "integer" },
+    "last_engagement": { "type": ["object", "null"] },
+    "scout_intel": { "type": "array" },
+    "opponent_profiles": { "type": "object" }
+  },
+  "description": "Policy input = own shop + genome + this memory. Forbidden: live opponent Field/Hangar this round."
+}

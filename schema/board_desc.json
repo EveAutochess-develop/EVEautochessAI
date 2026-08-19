@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eveac.ai.board_desc",
+  "title": "Board description exported from DataStore.board / BoardController",
+  "type": "object",
+  "required": ["schema_ver", "legal_cells"],
+  "properties": {
+    "schema_ver": { "type": "string" },
+    "half_rows": { "type": "integer" },
+    "half_cols_even": { "type": "integer" },
+    "half_cols_odd": { "type": "integer" },
+    "divider_width": { "type": "number" },
+    "y_fence": { "type": "object" },
+    "hangar_slots": { "type": "integer" },
+    "legal_cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slot_type", "x", "z"],
+        "properties": {
+          "slot_type": { "type": "string", "enum": ["field", "hangar"] },
+          "team": { "type": "integer" },
+          "x": { "type": "integer" },
+          "z": { "type": "integer" }
+        }
+      }
+    }
+  },
+  "description": "Kernel reads this at fight start. Do not copy current constants into policy code."
+}
